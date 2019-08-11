@@ -1,0 +1,34 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 2em;
+}
+
+#container {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding-top: 4em;
+}
+
+.text-container {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 50%;
+  padding: 2em;
+}
+
+textarea {
+  width: 100%;
+  height: 100%;
+  font-family: Consolas, monospace;
+}
