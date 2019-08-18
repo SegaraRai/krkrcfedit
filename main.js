@@ -19,7 +19,7 @@ function escapeCf(str) {
     if (line[0] === ';') {
       return line;
     }
-    const match = line.match(/^([^=]+)="((?:[^"\\]|\\.)+)"(.*)$/);
+    const match = line.match(/^([^=]+)="((?:[^"\\]|\\.)*)"(.*)$/);
     if (!match) {
       return line;
     }
@@ -39,7 +39,7 @@ function unescapeCf(str) {
     if (line[0] === ';') {
       return line;
     }
-    const match = line.match(/^([^=]+)="([^"]+)"(.*)$/);
+    const match = line.match(/^([^=]+)="([^"]*)"(.*)$/);
     if (!match) {
       return line;
     }
@@ -78,7 +78,7 @@ document.body.addEventListener('keydown', event => {
     {
       const str = 'datapath="$(exepath)\\\\savedata"';
       if (/^datapath=/m.test(unescapedElement.value)) {
-        unescapedElement.value = unescapedElement.value.replace(/^datapath="(?:[^"\\]|\\.)+"/mg, str);
+        unescapedElement.value = unescapedElement.value.replace(/^datapath="(?:[^"\\]|\\.)*"/mg, str);
       } else {
         unescapedElement.value = unescapedElement.value.replace(/^(?:;.*?(\n|$))*/, (all, end) => `${all}${!all || end ? '' : '\n'}${str}\n`);
       }
