@@ -66,3 +66,25 @@ for (const eventName of ['keyup', 'change']) {
   escapedElement.addEventListener(eventName, doUnescape);
   unescapedElement.addEventListener(eventName, doEscape);
 }
+
+
+document.body.addEventListener('keydown', event => {
+  if (!event.ctrlKey || !event.shiftKey || event.altKey) {
+    return;
+  }
+
+  switch (event.code) {
+    case 'Digit1':
+    {
+      const str = 'datapath="$(exepath)\\\\savedata"';
+      if (/^datapath=/m.test(unescapedElement.value)) {
+        unescapedElement.value = unescapedElement.value.replace(/^datapath="(?:[^"\\]|\\.)+"/mg, str);
+      } else {
+        unescapedElement.value = unescapedElement.value.replace(/^(?:;.*?(\n|$))*/, (all, end) => `${all}${!all || end ? '' : '\n'}${str}\n`);
+      }
+      doEscape();
+      event.preventDefault();
+      break;
+    }
+  }
+});
